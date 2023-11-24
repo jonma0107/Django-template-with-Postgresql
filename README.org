@@ -1,5 +1,5 @@
-** Plantilla-Django
-Hemos creado con DOCKER una plantilla con la imagen de Python para empezar a crear proyectos de Django.
+** Plantilla de Django con Postgresql
+Hemos creado con DOCKER una plantilla con la imagen de Python y Postgresql para empezar a crear proyectos de Django.
 
 Una vez configurados los archivos Dockerfile, docker-compose.yml, requirements.txt, damos los respectivos comandos de Docker para crear las imágenes y servicios a partir de la configuración implementada:
 
@@ -15,19 +15,90 @@ Para indicar cómo correr las imágenes y servicios desde docker-compose.yml:
 docker-compose build
 #+END_SRC
 
+**   
+
+Cabe anotar que se ha integrado para ejecutar tareas desde la barra de estados de Visual Studio Code, mediante el archivo tasks.json, esto nos permitirá con un solo click ejecutar las tareas sin necesidad de trasncribir los comandos en la terminal:
+
+[[https://i.ibb.co/bX4RbJP/tasks2.jpg]]
+[[https://i.ibb.co/d5WwPHJ/tasks.jpg]]
+
+**  
+
 Los comandos que se ejecutarán para hacer que funcione nuestro contenedor son:
 
 #+BEGIN_SRC
-docker-compose run --rm app sh -c "django-admin startproject recipes ."
+docker-compose run --rm app sh -c "django-admin startproject project ."
 #+END_SRC
 
-Cómo podemos observar encerramos entre comillas los comandos de Python que darán ordenes dentro de nuestro contenedor de Docker, en este caso hemos ejecutado la orden de la creación de un proyecto de Django. Ahora, si queremos ver que nuestro proyecto recién creado en el contenedor funciona podemos ejecutar el siguiente comando que levantará el servicio del servidor de Django:
+[[https://i.ibb.co/BwYYLw1/startproject.jpg]]
+
+Cómo podemos observar encerramos entre comillas los comandos de Python que darán ordenes dentro de nuestro contenedor de Docker, en este caso hemos ejecutado la orden de la creación de un proyecto de Django. De igual manera y para fines práticos en Visual Studio Code hemos automatizado dicha orden mediante un boton en la barra de estados del editor. Es importante tener en cuenta que para acceder mediante la barra de estados a las tareas automatizadas hay que instalar la extensión TASKS de Visual Studio Code:
+
+[[https://i.ibb.co/3mV9yNT/tasks3.jpg]]
+
+**   
+
+El proyecto necesita configuración antes de levantar los servicios de Docker.
+
+Configurar =settings.py= en cuanto a importar =os= y en cuanto a la configuración de la base de datos:
+[[https://i.ibb.co/jhwqN0c/os.jpg]]
+[[https://i.ibb.co/8cvQttS/db.jpg]]
+#+BEGIN_SRC
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
+    }
+}
+#+END_SRC
+
+Las variables de entorno que se implementan en la configuración de la base de datos están declaradas en el archivo =docker-compose.yml=  
+
+**   
+
+Hay una configuración adicional, para quienes ver desde su entorno local en la web con la url =http://0.0.0.0:8000/=:
+
+[[https://i.ibb.co/v11XTCx/host.jpg]]
+
+**   
+
+Al crear el proyecto mediante =startproject= y después de configurar =settings.py= veremos que dicho proyecto se aloja en la carpeta que de forma predeterminada está creada en esta plantilla:
+
+[[https://i.ibb.co/6Pmh2J5/start.jpg]]
+
+**   
+Procedemos a levantar el servicio de docker, si queremos ver que nuestro proyecto recién creado en el contenedor funciona, de esta manera podemos ver el servidor de DJango uncionando en la web:
 
 #+BEGIN_SRC
 docker-compose up -d
 #+END_SRC
 
+[[https://i.ibb.co/C5MqwFb/up.jpg]]
+
+En la barra de =url= de nuestro navegador podemos ingresar con =http://0.0.0.0:8000/= ó =http://localhost:8000/=
+
 [[https://i.ibb.co/tpKr9k0/django.png]]
+
+**  
+
+** BASE DE DATOS
+
+Ahora necesitamos migrar las tablas que por defecto tiene Django para iniciar nuestra base de datos. Y a partir de eso crear un superusuario:
+
+1.) Podemos ingresar con el servicio de Docker levantado con el atajo que se encuentra en la barra de estados:
+
+[[https://i.ibb.co/dmcB361/shell.jpg]]
+
+2.) Dicho atajo ejecutará la tarea que abre la =shell= de Python:
+
+[[https://i.ibb.co/VJ1WSBq/shell2.jpg]]
+
+3.) En shell de Python digitamos:
+
+
 
 ** Flake8
 
