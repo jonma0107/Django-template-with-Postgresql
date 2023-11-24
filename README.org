@@ -1,7 +1,11 @@
 ** Plantilla de Django con Postgresql
 Hemos creado con DOCKER una plantilla con la imagen de Python y Postgresql para empezar a crear proyectos de Django.
 
-Una vez configurados los archivos Dockerfile, docker-compose.yml, requirements.txt, damos los respectivos comandos de Docker para crear las imágenes y servicios a partir de la configuración implementada:
+Inicialmente descargamos los archivos comprimidos en nuestro computador local, en la carpeta en donde sea ha descomprimido se crea otra carpeta donde quedará alojado todo nuestro proyecto de Django, de no hacerlo los archivos que se vayan a crear con el Framenwork de Django estarían mezclandsose con los archivos descomprimidos de Docker.
+
+[[https://i.ibb.co/gzHwMfy/carpeta.jpg]]
+
+Una vez configurados los archivos Dockerfile, docker-compose.yml, y requirements.txt, damos los respectivos comandos de Docker para crear las imágenes y servicios a partir de la configuración implementada:
 
 Para definir las dependecias desde Dockerfile:
 
@@ -24,7 +28,7 @@ Cabe anotar que se ha integrado para ejecutar tareas desde la barra de estados d
 
 **  
 
-Los comandos que se ejecutarán para hacer que funcione nuestro contenedor son:
+Una vez construido nuetsro contenedor con sus respectivas imágenes y servicios, procedemos a hacer uso de Django para crear nuestro proyecto:
 
 #+BEGIN_SRC
 docker-compose run --rm app sh -c "django-admin startproject project ."
