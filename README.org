@@ -98,7 +98,18 @@ Ahora necesitamos migrar las tablas que por defecto tiene Django para iniciar nu
 
 3.) En shell de Python digitamos:
 
+=python manage.py migrate=
 
+Esto generará que se migren las tablas que por defecto tiene Django:
+
+[[https://i.ibb.co/b6GPs1n/migrate.jpg]]
+
+**   
+Nota: si se necesita borrar la base de datos que se creó en el volumen de Docker, puede hacero mediante el siguiente comando, lo cual le permite migrar Nuevamente las tablas de Django:
+
+=docker volume rm project-django_dev-db-data=
+
+**   
 
 ** Flake8
 
