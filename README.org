@@ -1,0 +1,48 @@
+** Plantilla-Django
+Hemos creado con DOCKER una plantilla con la imagen de Python para empezar a crear proyectos de Django.
+
+Una vez configurados los archivos Dockerfile, docker-compose.yml, requirements.txt, damos los respectivos comandos de Docker para crear las imágenes y servicios a partir de la configuración implementada:
+
+Para definir las dependecias desde Dockerfile:
+
+#+BEGIN_SRC
+docker build .
+#+END_SRC
+
+Para indicar cómo correr las imágenes y servicios desde docker-compose.yml:
+
+#+BEGIN_SRC
+docker-compose build
+#+END_SRC
+
+Los comandos que se ejecutarán para hacer que funcione nuestro contenedor son:
+
+#+BEGIN_SRC
+docker-compose run --rm app sh -c "django-admin startproject recipes ."
+#+END_SRC
+
+Cómo podemos observar encerramos entre comillas los comandos de Python que darán ordenes dentro de nuestro contenedor de Docker, en este caso hemos ejecutado la orden de la creación de un proyecto de Django. Ahora, si queremos ver que nuestro proyecto recién creado en el contenedor funciona podemos ejecutar el siguiente comando que levantará el servicio del servidor de Django:
+
+#+BEGIN_SRC
+docker-compose up -d
+#+END_SRC
+
+[[https://i.ibb.co/tpKr9k0/django.png]]
+
+** Flake8
+
+Flake8 es una herramienta de linting y verificación de código para Python. 
+Su objetivo principal es ayudar a los desarrolladores a mantener un código Python limpio y legible mediante la identificación de errores de estilo y problemas potenciales en el código fuente.
+
+El comando para ejecutar flake8 y verificar nuestro código:
+
+#+BEGIN_SRC
+docker-compose run --rm app sh -c "flake8"
+#+END_SRC
+
+La configuración de Flake8 en nuestra plantilla se puede conocer con más detalle en el commit d56e45049189c7d7231d49f48088f8aa8ae0a468 - [ADD] implementing flake8 to verify clean code
+
+
+
+
+
