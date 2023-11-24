@@ -28,7 +28,7 @@ Cabe anotar que se ha integrado para ejecutar tareas desde la barra de estados d
 
 **  
 
-Una vez construido nuetsro contenedor con sus respectivas imágenes y servicios, procedemos a hacer uso de Django para crear nuestro proyecto:
+Una vez construido nuestro contenedor con sus respectivas imágenes y servicios, procedemos a hacer uso de Django para crear nuestro proyecto:
 
 #+BEGIN_SRC
 docker-compose run --rm app sh -c "django-admin startproject project ."
@@ -69,7 +69,7 @@ Hay una configuración adicional, para quienes ver desde su entorno local en la 
 
 **   
 
-Al crear el proyecto mediante =startproject= y después de configurar =settings.py= veremos que dicho proyecto se aloja en la carpeta que de forma predeterminada está creada en esta plantilla:
+Al crear el proyecto mediante =startproject= y después de configurar =settings.py= veremos que dicho proyecto se aloja en la carpeta que de forma anticipada hemos creado al principio después de descomprimir los archivos de esta plantilla:
 
 [[https://i.ibb.co/6Pmh2J5/start.jpg]]
 
