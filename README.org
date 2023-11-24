@@ -82,7 +82,7 @@ En la barra de =url= de nuestro navegador podemos ingresar con =http://0.0.0.0:8
 
 [[https://i.ibb.co/tpKr9k0/django.png]]
 
-Nota: podemos verificar desded la terminal las imagenes levantadas por Docker, con el siguiente comando:
+Nota: podemos verificar desde la terminal los contenedores levantados por Docker, con el siguiente comando:
 
 =docker-compose ps=
 
