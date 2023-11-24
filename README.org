@@ -82,6 +82,10 @@ En la barra de =url= de nuestro navegador podemos ingresar con =http://0.0.0.0:8
 
 [[https://i.ibb.co/tpKr9k0/django.png]]
 
+Nota: podemos verificar desded la terminal las imagenes levantadas por Docker, con el siguiente comando:
+
+=docker-compose ps=
+
 **  
 
 ** BASE DE DATOS
@@ -112,11 +116,13 @@ Nota: si se necesita borrar la base de datos que se creó en el volumen de Docke
 
 **   
 
-Nota 2 : si quieres acceder a postgresql desde la terminal, digita el siguiente comando:
+Nota : si quieres acceder a postgresql desde la terminal, digita el siguiente comando:
 
 =psql -h localhost -U devuser -d devdb -W=
 
 y accedes con la contraseña parametrizada en el archivo =docker-compose.yml=
+
+**  
 
 ** Flake8
 
