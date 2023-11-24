@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+    "tasks": [
+    {
+      "label": "docker_build",
+      "type": "shell",
+      "command": "docker build .",
+      "problemMatcher": []
+    },
+    {
+      "label": "compose_build",
+      "type": "shell",
+      "command": "docker-compose build",
+      "problemMatcher": []
+    },
+    {
+      "label": "startproject",
+      "type": "shell",
+      "command": "docker-compose run --rm app sh -c \"django-admin startproject project .\"",
+      "problemMatcher": []
+    },      
+    {
+      "label": "compose_up",
+      "type": "shell",
+      "command": "docker-compose up -d",
+      "problemMatcher": []
+    },
+    {
+      "label": "compose_down",
+      "type": "shell",
+      "command": "docker-compose down",
+      "problemMatcher": []
+    },    
+    {
+      "label": "backend_shell",
+      "type": "shell",
+      "command": "docker exec -it project-django_app_1 sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "backend_logs",
+      "type": "shell",
+      "command": "docker logs --tail 1000 -f project-django_app_1",
+      "problemMatcher": []
+    }
+  ]
+}
