@@ -34,13 +34,13 @@
     {
       "label": "backend_shell",
       "type": "shell",
-      "command": "docker exec -it project-django_app_1 sh",
+      "command": "docker exec -it project-django-main_app_1 sh",
       "problemMatcher": []
     },
     {
       "label": "backend_logs",
       "type": "shell",
-      "command": "docker logs --tail 1000 -f project-django_app_1",
+      "command": "docker logs --tail 1000 -f project-django-main_app_1",
       "problemMatcher": []
     }
   ]
